@@ -1551,6 +1551,24 @@ namespace P4G_Save_Tool
                     compendiumBox.SelectedIndex = 0;
             }
         }
+        private void ReadInventoryFromFile(Stream file)
+        {
+            using (BinaryReader r = new BinaryReader(file))
+            {
+                r.BaseStream.Position = 136;
+                inventory = r.ReadBytes(2559);
+
+                invBox.Items.Clear();
+                stackBox.Items.Clear();
+
+                for (int i = 0; i < inventory.Length; i++)
+                    if (inventory[i] != 0)
+                        AddInventoryItem(new Item(Database.allItems[i], (ushort)i), inventory[i]);
+
+                Array.Clear(inventory, 0, inventory.Length);
+
+            }
+        }
 
         private void OpenFile(Stream file)
         {
@@ -1971,6 +1989,15 @@ namespace P4G_Save_Tool
             if (d.ShowDialog() == true)
             {
                 ReadCompendiumFromFile(File.OpenRead(filename = d.FileName));
+            }
+        }
+        private void ImportInventory_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = "Binary files (*.bin)|*.bin";
+            if (d.ShowDialog() == true)
+            {
+                ReadInventoryFromFile(File.OpenRead(filename = d.FileName));
             }
         }
 
