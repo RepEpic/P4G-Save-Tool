@@ -1534,6 +1534,24 @@ namespace P4G_Save_Tool
 
         }
 
+        private void ReadCompendiumFromFile(Stream file)
+        {
+            using (BinaryReader r = new BinaryReader(file))
+            {
+                compendiumBox.Items.Clear();
+                r.BaseStream.Position = 9688;
+                for (int i = 0; i < 249; i++)
+                {
+                    r.BaseStream.Position = 9688 + (48 * i);
+                    Persona persona = r.ReadPersona();
+                    AddCompendiumItem(persona);
+                }
+
+                if (compendiumBox.Items.Count > 0)
+                    compendiumBox.SelectedIndex = 0;
+            }
+        }
+
         private void OpenFile(Stream file)
         {
             using (BinaryReader r = new BinaryReader(file))
@@ -1944,6 +1962,16 @@ namespace P4G_Save_Tool
         private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void ImportCompendium_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = "Binary files (*.bin)|*.bin";
+            if (d.ShowDialog() == true)
+            {
+                ReadCompendiumFromFile(File.OpenRead(filename = d.FileName));
+            }
         }
 
         private void UpdateSaveSlot_Click(object sender, RoutedEventArgs e)
