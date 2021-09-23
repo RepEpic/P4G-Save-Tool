@@ -1466,7 +1466,7 @@ namespace P4G_Save_Tool
                 snBox.Text = surname;
                 fnBox.Text = firstname;
 
-                mcXpBox.Text = mcTotalXp.ToString();
+                mcXPBox.Text = mcTotalXp.ToString();
 
                 MCLVSlider.Value = mcLevel;
 
@@ -1745,7 +1745,7 @@ namespace P4G_Save_Tool
         {
             byte level = mcLevel;
             uint xp = (uint)(((uint)Math.Pow(level, 4) + 4 * (uint)Math.Pow(level, 3) + 53 * (uint)Math.Pow(level, 2) - 58 * level) / 10);
-            mcXpBox.Text = xp.ToString();
+            mcXPBox.Text = xp.ToString();
         }
 
         private void CalcXP_Copy_Click(object sender, RoutedEventArgs e)
