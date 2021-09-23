@@ -189,13 +189,13 @@
                     <TextBlock HorizontalAlignment="Right" Margin="0,92,355,0" TextWrapping="Wrap" Text="Understanding" TextAlignment="Right" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Right" Margin="0,120,354,0" TextWrapping="Wrap" Text="Diligence" TextAlignment="Right" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" Text="Total XP" VerticalAlignment="Top"/>
-                    <TextBox x:Name="mcXpBox" HorizontalAlignment="Left" Height="23" Margin="57,62,0,0" TextWrapping="Wrap" Text="0" TextAlignment="Right" VerticalAlignment="Top" Width="114" PreviewTextInput="PersonaID_PreviewTextInput" TextChanged="McXpBox_TextChanged"/>
-                    <Button x:Name="calcXp" Content="Calculate From Level" HorizontalAlignment="Left" Margin="57,90,0,0" VerticalAlignment="Top" Width="114" Click="CalcXp_Click">
+                    <TextBox x:Name="mcXPBox" HorizontalAlignment="Left" Height="23" Margin="57,62,0,0" TextWrapping="Wrap" Text="0" TextAlignment="Right" VerticalAlignment="Top" Width="114" PreviewTextInput="PersonaID_PreviewTextInput" TextChanged="McXPBox_TextChanged"/>
+                    <Button x:Name="calcXP" Content="Calculate From Level" HorizontalAlignment="Left" Margin="57,90,0,0" VerticalAlignment="Top" Width="114" Click="CalcXP_Click">
                         <Button.ToolTip>
                             <TextBlock Text="WARNING: P3's formula, may be inaccurate."/>
                         </Button.ToolTip>
                     </Button>
-                    <Button x:Name="calcXp_Copy" Content="Calculate From Level" HorizontalAlignment="Left" Margin="362,206,0,0" VerticalAlignment="Top" Width="114" Click="CalcXp_Copy_Click">
+                    <Button x:Name="calcXP_Copy" Content="Calculate From Level" HorizontalAlignment="Left" Margin="362,206,0,0" VerticalAlignment="Top" Width="114" Click="CalcXP_Copy_Click">
                         <Button.ToolTip>
                             <TextBlock Text="WARNING: P3's formula, may be inaccurate."/>
                         </Button.ToolTip>

@@ -857,8 +857,8 @@ namespace P4G_Save_Tool
             else personaSlot.IsEnabled = true;
             PersonaSlot_SelectionChanged(null, null);
             MCLVSlider.IsEnabled = member.SelectedIndex == 0;
-            mcXpBox.IsEnabled = member.SelectedIndex == 0;
-            calcXp.IsEnabled = member.SelectedIndex == 0;
+            mcXPBox.IsEnabled = member.SelectedIndex == 0;
+            calcXP.IsEnabled = member.SelectedIndex == 0;
 
         }
 
@@ -1729,26 +1729,26 @@ namespace P4G_Save_Tool
             socialStats[2] = StatusLevelToPoints(2, (byte)((e.Source as ComboBox).SelectedIndex + 1));
         }
 
-        private void McXpBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void McXPBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (readyEvents)
             {
                 uint result = 0;
-                if (uint.TryParse(mcXpBox.Text, out result))
+                if (uint.TryParse(mcXPBox.Text, out result))
                     mcTotalXp = result;
                 else
-                    mcXpBox.Text = mcTotalXp.ToString();
+                    mcXPBox.Text = mcTotalXp.ToString();
             }
         }
 
-        private void CalcXp_Click(object sender, RoutedEventArgs e)
+        private void CalcXP_Click(object sender, RoutedEventArgs e)
         {
             byte level = mcLevel;
             uint xp = (uint)(((uint)Math.Pow(level, 4) + 4 * (uint)Math.Pow(level, 3) + 53 * (uint)Math.Pow(level, 2) - 58 * level) / 10);
             mcXpBox.Text = xp.ToString();
         }
 
-        private void CalcXp_Copy_Click(object sender, RoutedEventArgs e)
+        private void CalcXP_Copy_Click(object sender, RoutedEventArgs e)
         {
             byte level = slots[member.SelectedIndex][personaSlot.SelectedIndex].Level;
             uint xp = (uint)(((uint)Math.Pow(level, 4) + 4 * (uint)Math.Pow(level, 3) + 53 * (uint)Math.Pow(level, 2) - 58 * level) / 10);
