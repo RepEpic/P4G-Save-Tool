@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/P4G Save Tool/bin/Debug/netcoreapp3.1/P4G Save Tool.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/P4G Save Tool.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/P4G Save Tool",
+            "cwd": "${workspaceFolder}/",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

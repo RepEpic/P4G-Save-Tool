@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/P4G Save Tool/P4G Save Tool.csproj",
+        "${workspaceFolder}/P4G Save Tool.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +19,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/P4G Save Tool/P4G Save Tool.csproj",
+        "${workspaceFolder}/P4G Save Tool.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary",
         "-c",
@@ -33,7 +33,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/P4G Save Tool/P4G Save Tool.csproj",
+        "${workspaceFolder}/P4G Save Tool.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -46,7 +46,7 @@
       "args": [
         "watch",
         "run",
-        "${workspaceFolder}/P4G Save Tool/P4G Save Tool.csproj",
+        "${workspaceFolder}/P4G Save Tool.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
