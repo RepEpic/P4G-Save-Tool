@@ -24,23 +24,23 @@ namespace P4G_Save_Tool
         public bool exists;
         public byte unknown0;
         public ushort id;
-        public byte level { get; set; }
-        public uint totalxp { get; set; }
+        public byte Level { get; set; }
+        public uint TotalXP { get; set; }
         public ushort unknown1;
         public byte unknown2;
-        public Item skill1 { get; set; }
-        public Item skill2 { get; set; }
-        public Item skill3 { get; set; }
-        public Item skill4 { get; set; }
-        public Item skill5 { get; set; }
-        public Item skill6 { get; set; }
-        public Item skill7 { get; set; }
-        public Item skill8 { get; set; }
-        public byte st { get; set; }
-        public byte ma { get; set; }
-        public byte de { get; set; }
-        public byte ag { get; set; }
-        public byte lu { get; set; }
+        public Item Skill1 { get; set; }
+        public Item Skill2 { get; set; }
+        public Item Skill3 { get; set; }
+        public Item Skill4 { get; set; }
+        public Item Skill5 { get; set; }
+        public Item Skill6 { get; set; }
+        public Item Skill7 { get; set; }
+        public Item Skill8 { get; set; }
+        public byte St { get; set; }
+        public byte Ma { get; set; }
+        public byte De { get; set; }
+        public byte Ag { get; set; }
+        public byte Lu { get; set; }
         private Item FromID(ushort id)
         {
             if (id >= Database.allSkills.Length) return Database.skills[0];
@@ -54,23 +54,23 @@ namespace P4G_Save_Tool
             this.exists = exists;
             this.unknown0 = unknown0;
             this.id = id;
-            this.level = level;
-            this.totalxp = totalxp;
+            this.Level = level;
+            this.TotalXP = totalxp;
             this.unknown1 = unknown1;
             this.unknown2 = unknown2;
-            this.skill1 = FromID(skill1);
-            this.skill2 = FromID(skill2);
-            this.skill3 = FromID(skill3);
-            this.skill4 = FromID(skill4);
-            this.skill5 = FromID(skill5);
-            this.skill6 = FromID(skill6);
-            this.skill7 = FromID(skill7);
-            this.skill8 = FromID(skill8);
-            this.st = st;
-            this.ma = ma;
-            this.de = de;
-            this.ag = ag;
-            this.lu = lu;
+            this.Skill1 = FromID(skill1);
+            this.Skill2 = FromID(skill2);
+            this.Skill3 = FromID(skill3);
+            this.Skill4 = FromID(skill4);
+            this.Skill5 = FromID(skill5);
+            this.Skill6 = FromID(skill6);
+            this.Skill7 = FromID(skill7);
+            this.Skill8 = FromID(skill8);
+            this.St = st;
+            this.Ma = ma;
+            this.De = de;
+            this.Ag = ag;
+            this.Lu = lu;
         }
     }
 
@@ -717,7 +717,7 @@ namespace P4G_Save_Tool
             return 0;
         }
 
-        private void personaID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void PersonaID_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
@@ -725,45 +725,45 @@ namespace P4G_Save_Tool
 
         private byte[] inventory;
 
-        private void personaIDs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PersonaIDs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
                 Persona persona = slots[member.SelectedIndex][personaSlot.SelectedIndex];
                 persona.id = (personaIDs.SelectedItem as Item).ID;
-                if (persona.level == 0 && persona.id != 0 && persona.exists == false)
-                    persona.level = 1;
+                if (persona.Level == 0 && persona.id != 0 && persona.exists == false)
+                    persona.Level = 1;
                 persona.exists = persona.id != 0;
             }
         }
 
-        private void skillBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SkillBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill1 = (skillBox1.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill2 = (skillBox2.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill3 = (skillBox3.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill4 = (skillBox4.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill5 = (skillBox5.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill6 = (skillBox6.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill7 = (skillBox7.SelectedItem as Item);
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].skill8 = (skillBox8.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill1 = (skillBox1.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill2 = (skillBox2.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill3 = (skillBox3.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill4 = (skillBox4.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill5 = (skillBox5.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill6 = (skillBox6.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill7 = (skillBox7.SelectedItem as Item);
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill8 = (skillBox8.SelectedItem as Item);
             }
         }
 
-        private void compSkillBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CompSkillBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
-                (compendiumBox.SelectedItem as Persona).skill1 = (compSkillBox1.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill2 = (compSkillBox2.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill3 = (compSkillBox3.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill4 = (compSkillBox4.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill5 = (compSkillBox5.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill6 = (compSkillBox6.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill7 = (compSkillBox7.SelectedItem as Item);
-                (compendiumBox.SelectedItem as Persona).skill8 = (compSkillBox8.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill1 = (compSkillBox1.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill2 = (compSkillBox2.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill3 = (compSkillBox3.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill4 = (compSkillBox4.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill5 = (compSkillBox5.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill6 = (compSkillBox6.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill7 = (compSkillBox7.SelectedItem as Item);
+                (compendiumBox.SelectedItem as Persona).Skill8 = (compSkillBox8.SelectedItem as Item);
             }
         }
 
@@ -772,7 +772,7 @@ namespace P4G_Save_Tool
             readyEvents = true;
         }
 
-        private void personaSlot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PersonaSlot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -780,23 +780,23 @@ namespace P4G_Save_Tool
                 for (int i = 0; i < personae.Count; i++)
                     if ((personaIDs.Items[i] as Item).ID == slots[member.SelectedIndex][personaSlot.SelectedIndex].id)
                         personaIDs.SelectedIndex = i;
-                skillBox1.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill1;
-                skillBox2.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill2;
-                skillBox3.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill3;
-                skillBox4.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill4;
-                skillBox5.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill5;
-                skillBox6.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill6;
-                skillBox7.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill7;
-                skillBox8.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].skill8;
+                skillBox1.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill1;
+                skillBox2.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill2;
+                skillBox3.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill3;
+                skillBox4.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill4;
+                skillBox5.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill5;
+                skillBox6.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill6;
+                skillBox7.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill7;
+                skillBox8.SelectedItem = slots[member.SelectedIndex][personaSlot.SelectedIndex].Skill8;
 
-                LVSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].level;
-                STSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].st;
-                MASlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].ma;
-                DESlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].de;
-                AGSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].ag;
-                LUSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].lu;
+                LVSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].Level;
+                STSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].St;
+                MASlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].Ma;
+                DESlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].De;
+                AGSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].Ag;
+                LUSlider.Value = slots[member.SelectedIndex][personaSlot.SelectedIndex].Lu;
 
-                xpBox.Text = slots[member.SelectedIndex][personaSlot.SelectedIndex].totalxp.ToString();
+                xpBox.Text = slots[member.SelectedIndex][personaSlot.SelectedIndex].TotalXP.ToString();
 
                 readyEvents = true;
             }
@@ -806,8 +806,8 @@ namespace P4G_Save_Tool
         {
             if (readyEvents)
             {
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].level = (byte)e.NewValue;
-                if (slots[member.SelectedIndex][personaSlot.SelectedIndex].level > 99)
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Level = (byte)e.NewValue;
+                if (slots[member.SelectedIndex][personaSlot.SelectedIndex].Level > 99)
                     LVVal.Foreground = new SolidColorBrush(Colors.Red);
                 else
                     LVVal.Foreground = new SolidColorBrush(Colors.Black);
@@ -817,52 +817,52 @@ namespace P4G_Save_Tool
         private void STSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (readyEvents)
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].st = (byte)e.NewValue;
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].St = (byte)e.NewValue;
 
         }
 
         private void MASlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (readyEvents)
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].ma = (byte)e.NewValue;
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Ma = (byte)e.NewValue;
 
         }
 
         private void DESlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (readyEvents)
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].de = (byte)e.NewValue;
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].De = (byte)e.NewValue;
 
         }
 
         private void AGSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (readyEvents)
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].ag = (byte)e.NewValue;
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Ag = (byte)e.NewValue;
 
         }
 
         private void LUSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (readyEvents)
-                slots[member.SelectedIndex][personaSlot.SelectedIndex].lu = (byte)e.NewValue;
+                slots[member.SelectedIndex][personaSlot.SelectedIndex].Lu = (byte)e.NewValue;
 
         }
 
-        private void member_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Member_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             personaSlot.SelectedIndex = 0;
             if (member.SelectedIndex != 0)
                 personaSlot.IsEnabled = false;
             else personaSlot.IsEnabled = true;
-            personaSlot_SelectionChanged(null, null);
+            PersonaSlot_SelectionChanged(null, null);
             MCLVSlider.IsEnabled = member.SelectedIndex == 0;
             mcXpBox.IsEnabled = member.SelectedIndex == 0;
             calcXp.IsEnabled = member.SelectedIndex == 0;
 
         }
 
-        private void yenBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void YenBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -875,7 +875,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void phaseBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PhaseBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -883,7 +883,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void fnBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void FnBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -900,7 +900,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void snBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void SnBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1025,7 +1025,7 @@ namespace P4G_Save_Tool
             SaveFile(new FileStream(filename, FileMode.Open, FileAccess.ReadWrite));
         }
 
-        private void itemSectBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ItemSectBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1040,12 +1040,12 @@ namespace P4G_Save_Tool
             invBox.Items.Add(item);
             invBox.SelectedItem = item;
             var box = new TextBox() { Text = stack.ToString(), Width = 30, Height = 16, TextWrapping = TextWrapping.NoWrap, TextAlignment = TextAlignment.Right };
-            box.PreviewTextInput += personaID_PreviewTextInput;
+            box.PreviewTextInput += PersonaID_PreviewTextInput;
             box.SelectionChanged += (object o, RoutedEventArgs e) =>
             {
                 stackBox.SelectedItem = e.Source;
             };
-            box.TextChanged += itemStack_TextChanged;
+            box.TextChanged += ItemStack_TextChanged;
             stackBox.Items.Add(box);
             stackBox.SelectedIndex = invBox.SelectedIndex;
         }
@@ -1063,7 +1063,7 @@ namespace P4G_Save_Tool
             stackBox.Items.RemoveAt(i);
         }
 
-        private void itemBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ItemBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1097,17 +1097,17 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void invBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void InvBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             stackBox.SelectedIndex = invBox.SelectedIndex;
         }
 
-        private void stackBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void StackBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             invBox.SelectedIndex = stackBox.SelectedIndex;
         }
 
-        private void itemStack_TextChanged(object sender, TextChangedEventArgs e)
+        private void ItemStack_TextChanged(object sender, TextChangedEventArgs e)
         {
             stackBox.SelectedIndex = stackBox.Items.IndexOf(e.Source);
             byte result = 0;
@@ -1123,7 +1123,7 @@ namespace P4G_Save_Tool
         {
         }
 
-        private void skillBox1_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void SkillBox1_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             foreach (Item i in (e.Source as ComboBox).Items)
             {
@@ -1136,7 +1136,7 @@ namespace P4G_Save_Tool
             e.Handled = true;
         }
 
-        private void skillBox1_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
+        private void SkillBox1_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
         {
             //if (e.Text.Length < 3)
             //    (e.Source as ComboBox).IsEditable = false;
@@ -1171,7 +1171,7 @@ namespace P4G_Save_Tool
             deleteAllMenuItem.IsEnabled = compendiumBox.Items.Count > 0;
         }
 
-        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1179,7 +1179,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void deleteMenuItem_Click2(object sender, RoutedEventArgs e)
+        private void DeleteMenuItem_Click2(object sender, RoutedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1187,7 +1187,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void deleteMenuItem_Click3(object sender, RoutedEventArgs e)
+        private void DeleteMenuItem_Click3(object sender, RoutedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1195,7 +1195,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void charBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CharBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1243,27 +1243,27 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void wepBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void WepBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
                 equippedWeapons[(charBox.SelectedItem as Item).ID] = wepBox.SelectedItem != null ? (wepBox.SelectedItem as Item).ID : (ushort)0;
         }
 
-        private void armBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ArmBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
                 equippedArmors[charBox.SelectedIndex] = (armBox.SelectedItem as Item).ID;
 
         }
 
-        private void accBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AccBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
                 equippedAccessories[charBox.SelectedIndex] = (accBox.SelectedItem as Item).ID;
 
         }
 
-        private void cosBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CosBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
                 equippedCostumes[charBox.SelectedIndex] = (cosBox.SelectedItem as Item).ID;
@@ -1275,7 +1275,7 @@ namespace P4G_Save_Tool
             a.ShowDialog();
         }
 
-        private void sLinkComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SLinkComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1491,8 +1491,8 @@ namespace P4G_Save_Tool
                 member.SelectedIndex = 1;
                 member.SelectedIndex = 0;
 
-                member_SelectionChanged(null, null);
-                charBox_SelectionChanged(null, null);
+                Member_SelectionChanged(null, null);
+                CharBox_SelectionChanged(null, null);
             }
         }
 
@@ -1543,7 +1543,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void compendiumBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CompendiumBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (compendiumBox.SelectedItem == null)
             {
@@ -1586,20 +1586,20 @@ namespace P4G_Save_Tool
                 if (readyEvents)
                 {
                     readyEvents = false;
-                    compSkillBox1.SelectedItem = (compendiumBox.SelectedItem as Persona).skill1;
-                    compSkillBox2.SelectedItem = (compendiumBox.SelectedItem as Persona).skill2;
-                    compSkillBox3.SelectedItem = (compendiumBox.SelectedItem as Persona).skill3;
-                    compSkillBox4.SelectedItem = (compendiumBox.SelectedItem as Persona).skill4;
-                    compSkillBox5.SelectedItem = (compendiumBox.SelectedItem as Persona).skill5;
-                    compSkillBox6.SelectedItem = (compendiumBox.SelectedItem as Persona).skill6;
-                    compSkillBox7.SelectedItem = (compendiumBox.SelectedItem as Persona).skill7;
-                    compSkillBox8.SelectedItem = (compendiumBox.SelectedItem as Persona).skill8;
+                    compSkillBox1.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill1;
+                    compSkillBox2.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill2;
+                    compSkillBox3.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill3;
+                    compSkillBox4.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill4;
+                    compSkillBox5.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill5;
+                    compSkillBox6.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill6;
+                    compSkillBox7.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill7;
+                    compSkillBox8.SelectedItem = (compendiumBox.SelectedItem as Persona).Skill8;
                     readyEvents = true;
                 }
             }
         }
 
-        private void nextPhaseBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void NextPhaseBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1607,7 +1607,7 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void compendiumComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CompendiumComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1635,25 +1635,25 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void deleteAllMenuItem_Click(object sender, RoutedEventArgs e)
+        private void DeleteAllMenuItem_Click(object sender, RoutedEventArgs e)
         {
             compendiumBox.Items.Clear();
             compendiumBox.SelectedIndex = -1;
         }
 
-        private void xpBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void XpBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (readyEvents)
             {
                 uint result = 0;
                 if (uint.TryParse(xpBox.Text, out result))
-                    slots[member.SelectedIndex][personaSlot.SelectedIndex].totalxp = result;
+                    slots[member.SelectedIndex][personaSlot.SelectedIndex].TotalXP = result;
                 else
-                    xpBox.Text = slots[member.SelectedIndex][personaSlot.SelectedIndex].totalxp.ToString();
+                    xpBox.Text = slots[member.SelectedIndex][personaSlot.SelectedIndex].TotalXP.ToString();
             }
         }
 
-        private void nextDayBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void NextDayBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             byte result = 0;
             if (!byte.TryParse(nextDayBox.Text, out result))
@@ -1673,7 +1673,7 @@ namespace P4G_Save_Tool
             else NextDay = result;
         }
 
-        private void dayBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void DayBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             byte result = 0;
             if (!byte.TryParse(dayBox.Text, out result))
@@ -1704,32 +1704,32 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void courageBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CourageBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             socialStats[0] = StatusLevelToPoints(0, (byte)((e.Source as ComboBox).SelectedIndex + 1));
         }
 
-        private void knowledgeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void KnowledgeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             socialStats[1] = StatusLevelToPoints(1, (byte)((e.Source as ComboBox).SelectedIndex + 1));
         }
 
-        private void expressionBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ExpressionBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             socialStats[4] = StatusLevelToPoints(4, (byte)((e.Source as ComboBox).SelectedIndex + 1));
         }
 
-        private void understandingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UnderstandingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             socialStats[3] = StatusLevelToPoints(3, (byte)((e.Source as ComboBox).SelectedIndex + 1));
         }
 
-        private void diligenceBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DiligenceBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             socialStats[2] = StatusLevelToPoints(2, (byte)((e.Source as ComboBox).SelectedIndex + 1));
         }
 
-        private void mcXpBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void McXpBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (readyEvents)
             {
@@ -1741,21 +1741,21 @@ namespace P4G_Save_Tool
             }
         }
 
-        private void calcXp_Click(object sender, RoutedEventArgs e)
+        private void CalcXp_Click(object sender, RoutedEventArgs e)
         {
             byte level = mcLevel;
             uint xp = (uint)(((uint)Math.Pow(level, 4) + 4 * (uint)Math.Pow(level, 3) + 53 * (uint)Math.Pow(level, 2) - 58 * level) / 10);
             mcXpBox.Text = xp.ToString();
         }
 
-        private void calcXp_Copy_Click(object sender, RoutedEventArgs e)
+        private void CalcXp_Copy_Click(object sender, RoutedEventArgs e)
         {
-            byte level = slots[member.SelectedIndex][personaSlot.SelectedIndex].level;
+            byte level = slots[member.SelectedIndex][personaSlot.SelectedIndex].Level;
             uint xp = (uint)(((uint)Math.Pow(level, 4) + 4 * (uint)Math.Pow(level, 3) + 53 * (uint)Math.Pow(level, 2) - 58 * level) / 10);
             xpBox.Text = xp.ToString();
         }
 
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

@@ -47,24 +47,24 @@ namespace P4G_Save_Tool
             w.Write(persona.exists);
             w.Write(persona.unknown0);
             w.Write(persona.id);
-            w.Write(persona.level);
+            w.Write(persona.Level);
             w.BaseStream.Position += 3;
-            w.Write(persona.totalxp);
+            w.Write(persona.TotalXP);
             //w.Write(persona.unknown1);
             //w.Write(persona.unknown2);
-            w.Write(persona.skill1.ID);
-            w.Write(persona.skill2.ID);
-            w.Write(persona.skill3.ID);
-            w.Write(persona.skill4.ID);
-            w.Write(persona.skill5.ID);
-            w.Write(persona.skill6.ID);
-            w.Write(persona.skill7.ID);
-            w.Write(persona.skill8.ID);
-            w.Write(persona.st);
-            w.Write(persona.ma);
-            w.Write(persona.de);
-            w.Write(persona.ag);
-            w.Write(persona.lu);
+            w.Write(persona.Skill1.ID);
+            w.Write(persona.Skill2.ID);
+            w.Write(persona.Skill3.ID);
+            w.Write(persona.Skill4.ID);
+            w.Write(persona.Skill5.ID);
+            w.Write(persona.Skill6.ID);
+            w.Write(persona.Skill7.ID);
+            w.Write(persona.Skill8.ID);
+            w.Write(persona.St);
+            w.Write(persona.Ma);
+            w.Write(persona.De);
+            w.Write(persona.Ag);
+            w.Write(persona.Lu);
         }
         public static string ReadJString(this BinaryReader r)
         {
